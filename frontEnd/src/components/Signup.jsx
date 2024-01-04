@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, TextField, Typography, Button } from '@mui/material'
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
 const Signup = () => {
+  const [email, setemail] = useState("")
+  const [password, setpassword] = useState("")
+  const navigate = useNavigate()
   return (
     <div>
       <div style={{
@@ -19,16 +25,29 @@ const Signup = () => {
           <TextField
             label="Email"
             fullWidth={true}
-            variant="filled" />
+            variant="filled"
+            onChange={(e) => { setemail(e.target.value) }} />
           <br /> <br />
           <TextField
             label="Password"
             fullWidth={true}
-            type='password' />
+            type='password'
+            onChange={(e) => {
+              setpassword(e.target.value)
+            }} />
 
           <br /><br />
 
-          <Button size='large' variant="contained" color="warning">
+          <Button size='large' variant="contained" color="warning" onClick={async () => {
+            const response = await axios.post("http://localhost:3000/admin/signup", {
+              username: email,
+              password: password
+            })
+            let data = response.data
+            localStorage.setItem("token", data.token)
+            console.log(data)
+            navigate("/courses")
+          }}>
             SingUp
           </Button>
         </Card>

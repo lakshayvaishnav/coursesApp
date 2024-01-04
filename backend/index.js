@@ -4,9 +4,10 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const app = express();
 const server = http.createServer(app);
+const cors = require("cors");
 
 app.use(express.json());
-
+app.use(cors());
 const secretKey = "supers3cret";
 
 // defining schemas
