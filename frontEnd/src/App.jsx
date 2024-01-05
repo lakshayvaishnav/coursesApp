@@ -3,6 +3,8 @@ import Appbar from './components/Appbar'
 import Addcourse from './components/Addcourse'
 import Login from './components/Login'
 import Signup from './components/Signup'
+import Courses from './components/Courses'
+import Course from './components/Course'
 
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
           <Route path={'/addcourse'} element={<Addcourse />} />
           <Route path={"/login"} element={<Login />} />
           <Route path={"/signup"} element={<Signup />} />
+          <Route path={"/courses"} element={<Courses />} />
+          <Route path={"/course/:courseId"} element={<Course />} />
         </Routes>
       </BrowserRouter>
 

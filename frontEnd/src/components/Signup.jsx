@@ -23,7 +23,7 @@ const Signup = () => {
       <div style={{ justifyContent: "center", display: "flex" }}>
         <Card variant={"outlined"} style={{ width: 400, padding: 20 }}>
           <TextField
-            label="Email"
+            label="Email" 
             fullWidth={true}
             variant="filled"
             onChange={(e) => { setemail(e.target.value) }} />
